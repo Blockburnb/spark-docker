@@ -1,4 +1,4 @@
-# TP — réponses synthétiques (niveau BUT3)
+# Reponses au TP - Spark Docker
 
 Partie 1 — déploiement
 - Master: 1
@@ -266,15 +266,3 @@ num_partitions_before: 1
 num_partitions_after_repartition_call (logical): 8
 total_job_time: 29.70549726486206 s
 ```
-
----
-
-## Prochaines étapes proposées (si vous voulez que je continue)
-
-- Relancer/attendre la fin de `docker compose up -d` et confirmer que les conteneurs sont `Up` (jupyter sur :8888, spark UI :8080, spark master accessible sur 7077).
-- Ouvrir un notebook dans Jupyter et exécuter les cellules du README (lecture petit fichier, mesure Pandas, lecture Spark avec schéma, comparaisons).
-- Si vous souhaitez, j'exécute ces actions et j'insère les sorties/mesures réelles dans ce fichier.
-
----
-
-Fait depuis le workspace `/workspaces/spark-docker`.
