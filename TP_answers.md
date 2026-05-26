@@ -1,4 +1,45 @@
-# Réponses TP — Découverte de Spark et limites de Pandas
+# TP — réponses synthétiques (niveau BUT3)
+
+Partie 1 — déploiement
+- Master: 1
+- Workers: 3
+- Jupyter: 1
+Architecture (très bref)
+- Hôte: machine qui exécute Docker et contient `work/` et `stream-read/`.
+- Conteneurs: `spark-master`, `spark-worker-*`, `spark-jupyter`.
+Pandas
+- Q1: Les données sont chargées en RAM du processus Python exécutant Pandas.
+- Q2: Risque principal = manque de mémoire (OOM).
+Limites de Pandas
+- Q4: Pandas charge tout en mémoire; échoue si RAM insuffisante.
+- Q5: Taille fichier → besoin RAM; Pandas = single-node, in-memory.
+- Q6: Pas scalable (une seule machine).
+- Q7: Pour 100 Go → utiliser Spark/Dask ou traitement par morceaux.
+
+Spark (très bref)
+- Créer `SparkSession` vers `spark://spark-master:7077`.
+- Lire avec un `schema` si nécessaire.
+- Opérations: `count()`, `select()`, `filter()`, `agg()`.
+Questions conceptuelles
+- Q8: Pandas = local/in-memory ; Spark = distribué/lazy.
+- Q9: Spark gère plus de données via distribution et parallélisme.
+- Q10: Workers exécutent des tâches sur des partitions.
+- Q11: Spark = parallélisme, tolérance aux pannes.
+- Q12: Inconvénients = overhead, complexité, besoin d'infra.
+
+Comparaison courte
+| Critère | Pandas | Spark |
+|---|---:|---:|
+| Chargement mémoire | RAM locale | partitionné |
+| Calcul distribué | non | oui |
+| Scalabilité | limitée | horizontale |
+| Simplicité | simple | plus complexe |
+Sorties observées (résumé)
+- Conteneurs: `spark-master`, `spark-worker-1..3`, `spark-jupyter` → tous Up.
+- Pandas: taille 0.0019 GB; shape (1137,16); read ~0.025 s; avg 4.488; >4.5 count = 797.
+- Spark: v3.5.0; count = 1137; avg ~4.488; read ~16.9 s; partitions avant 1 après 8.
+Fait dans `/workspaces/spark-docker`.
+# Réponses TP — Spark Docker
 
 Ce fichier contient les réponses concises aux manipulations et questions demandées dans le `README.md`, ainsi que les sorties observées lors de l'exécution des commandes.
 
